@@ -51,5 +51,5 @@ public class StartScreenViewController: UIViewController {
     @objc func startTransition(sender: UIButton) {
         let viewController = QuizViewController()
         self.present(viewController, animated: true, completion: nil)
-    }sus
+    }
 }

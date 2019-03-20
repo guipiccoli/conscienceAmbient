@@ -55,7 +55,7 @@ public class QuizViewController : UIViewController {
         view.addSubview(questionText)
         
         
-        optionA.frame = CGRect(x: 100, y: 710, width: 260, height: 110)
+        optionA.frame = CGRect(x: 100, y: 710, width: 260, height: 130)
         optionA.tag = 0
         optionA.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
         optionA.layer.cornerRadius = 12
@@ -70,7 +70,7 @@ public class QuizViewController : UIViewController {
         view.addSubview(optionA)
         
         
-        optionB.frame = CGRect(x: 375, y: 710, width: 260, height: 110)
+        optionB.frame = CGRect(x: 375, y: 710, width: 260, height: 130)
         optionB.tag = 1
         optionB.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
         optionB.layer.cornerRadius = 12
@@ -86,7 +86,7 @@ public class QuizViewController : UIViewController {
         view.addSubview(optionB)
         
         
-        optionC.frame = CGRect(x: 100, y: 835, width: 260, height: 110)
+        optionC.frame = CGRect(x: 100, y: 855, width: 260, height: 130)
         optionC.tag = 2
         optionC.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
         optionC.layer.cornerRadius = 12
@@ -101,7 +101,7 @@ public class QuizViewController : UIViewController {
         view.addSubview(optionC)
         
         
-        optionD.frame = CGRect(x: 375, y: 835, width: 260, height: 110)
+        optionD.frame = CGRect(x: 375, y: 855, width: 260, height: 130)
         optionD.tag = 3
         optionD.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
         optionD.layer.cornerRadius = 12
@@ -149,28 +149,48 @@ public class QuizViewController : UIViewController {
             imageView.image = UIImage(named:(questionList.list[questionNumber].image))
             questionText.text = allQuestions.list[questionNumber].questionText
             
-            
-            optionA.setTitle(questionList.list[questionNumber].optionA.choice, for: .normal)
-            optionA.setTitleColor(.black, for: .normal)
-            
-            optionB.setTitle(questionList.list[questionNumber].optionB.choice, for: .normal)
-            optionB.setTitleColor(.black, for: .normal)
-            
-            optionC.setTitle(questionList.list[questionNumber].optionC.choice , for: .normal)
-            optionC.setTitleColor(.black, for: .normal)
-            
-            
-            optionD.setTitle(questionList.list[questionNumber].optionD.choice, for: .normal)
-            optionD.setTitleColor(.black, for: .normal)
-            
+            if allQuestions.list[questionNumber].boolImageOption {
+                optionA.setTitle("", for: .normal)
+                optionA.setImage(UIImage(named: questionList.list[questionNumber].optionA.choice), for: .normal)
+                
+                optionA.imageView?.contentMode = .scaleAspectFit
+                optionA.setTitleColor(.black, for: .normal)
+                
+                
+                optionB.setTitle("", for: .normal)
+                optionB.setImage(UIImage(named: questionList.list[questionNumber].optionB.choice), for: .normal)
+                optionB.imageView?.contentMode = .scaleAspectFit
+                optionB.setTitleColor(.black, for: .normal)
+                
+                optionC.setTitle("", for: .normal)
+                optionC.setImage(UIImage(named: questionList.list[questionNumber].optionC.choice), for: .normal)
+                optionC.imageView?.contentMode = .scaleAspectFit
+                optionC.setTitleColor(.black, for: .normal)
+                
+                
+                optionD.setTitle("", for: .normal)
+                optionD.setImage(UIImage(named: questionList.list[questionNumber].optionD.choice), for: .normal)
+                optionD.imageView?.contentMode = .scaleAspectFit
+                optionD.setTitleColor(.black, for: .normal)
+            }
+            else {
+                optionA.setTitle(questionList.list[questionNumber].optionA.choice, for: .normal)
+                optionA.setTitleColor(.black, for: .normal)
+                
+                optionB.setTitle(questionList.list[questionNumber].optionB.choice, for: .normal)
+                optionB.setTitleColor(.black, for: .normal)
+                
+                optionC.setTitle(questionList.list[questionNumber].optionC.choice , for: .normal)
+                optionC.setTitleColor(.black, for: .normal)
+                
+                
+                optionD.setTitle(questionList.list[questionNumber].optionD.choice, for: .normal)
+                optionD.setTitleColor(.black, for: .normal)
+            }
             
             updateUI()
             
         }else {
-//            let alert = UIAlertController(title: "Awesome!!!" , message: "You are \(progress*100)% conscious about it ", preferredStyle: .alert)
-//            let restartAction = UIAlertAction(title: "Restart", style: .default, handler: {action in self.restartQuiz()})
-//            alert.addAction(restartAction)
-//            present(alert, animated: true, completion: nil)
             let finishQuizzViewController = FinishScreenViewController()
             finishQuizzViewController.progress = self.progress
             self.present(finishQuizzViewController, animated: true, completion: nil)

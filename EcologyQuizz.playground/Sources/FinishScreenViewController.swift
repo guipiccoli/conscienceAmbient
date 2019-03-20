@@ -40,7 +40,18 @@ public class FinishScreenViewController: UIViewController {
 
 
         
-        let buttonNextChapter = UIButton(frame: CGRect(x: w/2-150, y: h/2+400, width: 300, height: 60))
+        let buttonMainPage = UIButton(frame: CGRect(x: w/2-150, y: h/2+400, width: 300, height: 60))
+        buttonMainPage.titleLabel?.textAlignment = .center
+        buttonMainPage.setTitle("Menu", for: .normal)
+        buttonMainPage.titleLabel?.font = buttonMainPage.titleLabel?.font.withSize(20)
+        buttonMainPage.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.9)
+        buttonMainPage.layer.cornerRadius = 20
+        //buttonNextChapter.layer.borderWidth = 2
+        //buttonNextChapter.layer.borderColor = UIColor.black.cgColor;
+        buttonMainPage.setTitleColor(.black, for: .normal)
+        buttonMainPage.addTarget(self, action: #selector(mainPageTransition(sender:)), for: .touchDown)
+        
+        let buttonNextChapter = UIButton(frame: CGRect(x: w/2-150, y: h/2+320, width: 300, height: 60))
         buttonNextChapter.titleLabel?.numberOfLines = 2
         buttonNextChapter.titleLabel?.textAlignment = .center
         buttonNextChapter.setTitle("Let's check it out!!", for: .normal)
@@ -52,8 +63,10 @@ public class FinishScreenViewController: UIViewController {
         buttonNextChapter.setTitleColor(.black, for: .normal)
         buttonNextChapter.addTarget(self, action: #selector(lessonTransition(sender:)), for: .touchDown)
         
+        
         view.addSubview(labelText)
         view.addSubview(buttonNextChapter)
+        view.addSubview(buttonMainPage)
         view.addSubview(labelTitle)
 
         
@@ -76,5 +89,9 @@ public class FinishScreenViewController: UIViewController {
     @objc func lessonTransition(sender: UIButton) {
         let lessonViewController = LessonViewController()
         self.present(lessonViewController, animated: true, completion: nil)
+    }
+    @objc func mainPageTransition(sender: UIButton) {
+        let startScreen = StartScreenViewController()
+        self.present(startScreen, animated: true, completion: nil)
     }
 }
