@@ -4,9 +4,10 @@ public struct Question {
     public let image: String
     public let questionText: String
     public let boolImageOption : Bool
-    public let optionA : (choice: String, value: Float)
-    public let optionB : (choice: String, value: Float)
-    public let optionC : (choice: String, value: Float)
-    public let optionD : (choice: String, value: Float)
+    public let optionA : String
+    public let optionB : String
+    public let optionC : String
+    public let optionD : String
+    public let answer: Int
 }
 

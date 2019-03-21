@@ -11,7 +11,7 @@ public class LessonViewController: UIViewController {
         let w = view.bounds.size.width
         
         let background = UIImageView()
-        background.image = UIImage(named: "bg3.jpg")
+        background.image = UIImage(named: "background.png")
         background.frame = CGRect(x: 0, y: 0, width: w, height: h)
         view.addSubview(background)
         

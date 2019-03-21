@@ -11,21 +11,29 @@ public class StartScreenViewController: UIViewController {
         let w = view.bounds.size.width
         
         let background = UIImageView()
-        background.image = UIImage(named: "bg3.jpg")
+        background.image = UIImage(named: "background.png")
         background.frame = CGRect(x: 0, y: 0, width: 720, height: 1080)
         view.addSubview(background)
         
+        let logo = UIImageView()
+        logo.image = UIImage(named: "logo.png")
+        logo.frame = CGRect(x: w/2-225, y: 60, width: 450, height: 150)
         
-        let labelTitle = UILabel(frame: CGRect(x: w/2-150, y: 350, width: 300, height: 100))
-        labelTitle.text = "Lets Start!!!!"
-        labelTitle.backgroundColor = .red
+        view.addSubview(logo)
+        
+        
+        
+        
+        let labelTitle = UILabel(frame: CGRect(x: w/2-250, y: 400, width: 500, height: 300))
+        labelTitle.text = "That's your progress, you still have 0%, let's see you much you can get!"
+        labelTitle.numberOfLines = 4
         labelTitle.textAlignment = .center
-        labelTitle.font = labelTitle.font.withSize(50)
+        labelTitle.font = labelTitle.font.withSize(35)
         
         view.addSubview(labelTitle)
         
         
-        let progressView = ProgressCircularView(frame: CGRect(x: w/2-150 , y: h/2-170 , width: 150, height: 150))
+        let progressView = ProgressCircularView(frame: CGRect(x: w/2-150 , y: h/2-300 , width: 150, height: 150))
         progressView.trackColor = UIColor.lightGray
         progressView.progressColor = UIColor(red: 116.0/255, green: 162.0/255, blue: 38.0/255, alpha: 1.0)
 
