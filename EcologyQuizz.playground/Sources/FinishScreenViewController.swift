@@ -29,7 +29,6 @@ public class FinishScreenViewController: UIViewController {
         labelTitle.textColor = UIColor.init(red: 61.0/255, green: 119.0/255, blue: 133.0/255, alpha: 1.0)
         labelTitle.textAlignment = .center
         labelTitle.numberOfLines = 2
-        //labelTitle.adjustsFontSizeToFitWidth = true
         
         
         let labelText = UILabel(frame: CGRect(x: w/2-225, y: h/2-100, width: 450, height: 300))
@@ -44,7 +43,6 @@ public class FinishScreenViewController: UIViewController {
         labelScore.numberOfLines = 2
         labelScore.textAlignment = .center
         let formattedScore = String(format: "%.1f", score*100)
-       // labelScore.text = String(format: "Your score is ", score*100)
         labelScore.text = "Your score is \(formattedScore)%"
         
         
@@ -93,13 +91,6 @@ public class FinishScreenViewController: UIViewController {
         let progressView = ProgressCircularView(frame: CGRect(x: w/2-100 , y: h/2-190 , width: 100, height: 100))
         progressView.trackColor = UIColor.lightGray
         progressView.progressColor = UIColor(red: 116.0/255, green: 162.0/255, blue: 38.0/255, alpha: 1.0)
-        //
-        //        let labelProgress = UILabel(frame: CGRect(x: w/2-65, y: h/2-100, width: 140, height: 40))
-        //        labelProgress.font = labelProgress.font.withSize(30)
-        //        labelProgress.textAlignment = .center
-        //        labelProgress.text = "\(progress*100)%"
-        //        view.addSubview(labelProgress)
-        //
         progressView.setProgressWithAnimation(duration: 2, fromValue: 0, value: score)
         view.addSubview(progressView)
         self.view = view
