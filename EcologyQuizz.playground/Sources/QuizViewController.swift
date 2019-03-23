@@ -17,7 +17,7 @@ public class QuizViewController : UIViewController {
     public let questionText = UILabel()
     public let lblQuestionNumber = UILabel()
     public let questionView = UIView()
-    public let progressView = ProgressCircularView(frame: CGRect(x: 560, y: 280, width: 50, height: 50))
+    public let progressView = ProgressCircularView(frame: CGRect(x: 330, y: 175, width: 50, height: 50))
     
     
     public let questionList = QuestionBank()
@@ -41,11 +41,10 @@ public class QuizViewController : UIViewController {
         progressView.progressColor = UIColor(red: 116.0/255, green: 162.0/255, blue: 38.0/255, alpha: 1.0)
         view.addSubview(progressView)
         
-        lblQuestionNumber.frame = CGRect(x: 50, y: 300, width: 200, height: 30)
-        //lblQuestionNumber.font = lblQuestionNumber.font.withSize(25)
+        lblQuestionNumber.frame = CGRect(x: 280, y: 210, width: 200, height: 30)
+        lblQuestionNumber.font = UIFont(name: "Futura-Bold", size: 25)
         lblQuestionNumber.textColor = UIColor(red: 116.0/255, green: 162.0/255, blue: 38.0/255, alpha: 1.0)
         view.addSubview(lblQuestionNumber)
-        lblQuestionNumber.font = UIFont.boldSystemFont(ofSize: 25)
         
         
         imageView.frame = CGRect(x: 290, y: 290, width: 135, height: 160)
@@ -58,13 +57,12 @@ public class QuizViewController : UIViewController {
         questionText.numberOfLines = 6
         questionText.adjustsFontSizeToFitWidth = true
         questionText.font = UIFont(name: "Futura-Bold", size: 40)
-//        questionText.font = UIFont.boldSystemFont(ofSize: 40)
         questionText.textColor = UIColor.init(red: 61.0/255, green: 119.0/255, blue: 133.0/255, alpha: 1.0)
         view.addSubview(questionText)
         
         
         optionA.frame = CGRect(x: 85, y: 710, width: 270, height: 130)
-        optionA.tag = 0
+        optionA.tag = 100
 //        optionA.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
         optionA.layer.cornerRadius = 12
         optionA.titleLabel?.textAlignment = .center
@@ -79,13 +77,11 @@ public class QuizViewController : UIViewController {
         
         
         optionB.frame = CGRect(x: 365, y: 710, width: 270, height: 130)
-        optionB.tag = 1
+        optionB.tag = 101
 //        optionB.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
         optionB.layer.cornerRadius = 12
         optionB.titleLabel?.textAlignment = .center
         optionB.titleLabel?.font = UIFont(name: "Futura", size: 21)
-        //optionB.titleLabel?.font = UIFont.boldSystemFont(ofSize: 21)
-       // optionB.titleLabel?.font = optionA.titleLabel?.font.withSize(25)
         optionB.titleLabel?.adjustsFontSizeToFitWidth = true
         optionB.titleLabel?.numberOfLines = 4
         
@@ -95,12 +91,11 @@ public class QuizViewController : UIViewController {
         
         
         optionC.frame = CGRect(x: 85, y: 855, width: 270, height: 130)
-        optionC.tag = 2
+        optionC.tag = 102
 //        optionC.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
         optionC.layer.cornerRadius = 12
         optionC.titleLabel?.textAlignment = .center
         optionC.titleLabel?.font = UIFont(name: "Futura", size: 21)
-        //optionC.titleLabel?.font = optionA.titleLabel?.font.withSize(21)
         optionC.titleLabel?.adjustsFontSizeToFitWidth = true
         optionC.titleLabel?.numberOfLines = 4
         
@@ -110,12 +105,11 @@ public class QuizViewController : UIViewController {
         
         
         optionD.frame = CGRect(x: 365, y: 855, width: 270, height: 130)
-        optionD.tag = 3
+        optionD.tag = 103
 //        optionD.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
         optionD.titleLabel?.font = UIFont(name: "Futura", size: 21)
         optionD.layer.cornerRadius = 12
         optionD.titleLabel?.textAlignment = .center
-        //optionD.titleLabel?.font = optionA.titleLabel?.font.withSize(21)
         optionD.titleLabel?.adjustsFontSizeToFitWidth = true
         optionD.titleLabel?.numberOfLines = 4
         
@@ -134,31 +128,27 @@ public class QuizViewController : UIViewController {
         
         if sender.tag == questionList.list[questionNumber].answer {
             auxProgressValue += scorePerQuestion
-            UIView.animate(withDuration: 2.0, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 sender.backgroundColor = UIColor.init(red: 116.0/225, green: 162.0/255, blue: 38.0/255, alpha: 0.9)
             }) { (hasEnded) in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.updateQuestion()
                 }
             }
         }
+        //wrong answer
         else {
-            //pintar vermelho
-            //pintar verde a correta 
+            UIView.animate(withDuration: 0.5, animations: {
+                sender.backgroundColor = UIColor.init(red: 238.0/225, green: 78.0/255, blue: 44/255, alpha: 0.9)
+                if let button = self.view.viewWithTag(self.questionList.list[self.questionNumber].answer) {
+                    button.backgroundColor = UIColor.init(red: 116.0/225, green: 162.0/255, blue: 38.0/255, alpha: 0.9)
+                    }
+            }) { (hasEnded) in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.updateQuestion()
+                }
+            }
         }
-        
-//        if sender.tag == 0 {
-//            auxProgressValue +=
-//        }
-//        if sender.tag == 1 {
-//            auxProgressValue += questionList.list[questionNumber].optionB.value
-//        }
-//        if sender.tag == 2 {
-//            auxProgressValue += questionList.list[questionNumber].optionC.value
-//        }
-//        else {
-//            auxProgressValue += questionList.list[questionNumber].optionD.value
-//        }
         
         progressView.setProgressWithAnimation(duration: 1, fromValue: score, value: auxProgressValue)
         score = auxProgressValue
@@ -176,26 +166,29 @@ public class QuizViewController : UIViewController {
             if questionList.list[questionNumber].boolImageOption {
                 optionA.setTitle("", for: .normal)
                 optionA.setImage(UIImage(named: questionList.list[questionNumber].optionA), for: .normal)
-                
                 optionA.imageView?.contentMode = .scaleAspectFit
                 optionA.setTitleColor(.black, for: .normal)
+                optionA.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
                 
                 
                 optionB.setTitle("", for: .normal)
                 optionB.setImage(UIImage(named: questionList.list[questionNumber].optionB), for: .normal)
                 optionB.imageView?.contentMode = .scaleAspectFit
                 optionB.setTitleColor(.black, for: .normal)
+                optionB.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
                 
                 optionC.setTitle("", for: .normal)
                 optionC.setImage(UIImage(named: questionList.list[questionNumber].optionC), for: .normal)
                 optionC.imageView?.contentMode = .scaleAspectFit
                 optionC.setTitleColor(.black, for: .normal)
+                optionC.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
                 
                 
                 optionD.setTitle("", for: .normal)
                 optionD.setImage(UIImage(named: questionList.list[questionNumber].optionD), for: .normal)
                 optionD.imageView?.contentMode = .scaleAspectFit
                 optionD.setTitleColor(.black, for: .normal)
+                optionD.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
             }
             else {
                 optionA.setImage(nil, for: .normal)

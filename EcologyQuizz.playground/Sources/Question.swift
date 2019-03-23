@@ -8,6 +8,8 @@ public struct Question {
     public let optionB : String
     public let optionC : String
     public let optionD : String
+    
+    //button tag 100 101 102 103
     public let answer: Int
 }
 

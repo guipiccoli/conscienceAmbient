@@ -17,22 +17,35 @@ public class FinishScreenViewController: UIViewController {
         view.addSubview(background)
         
         
-        let labelTitle = UILabel(frame: CGRect(x: w/2-200, y: 150, width: 400, height: 100))
-        labelTitle.font = labelTitle.font.withSize(50)
+        let logo = UIImageView()
+        logo.image = UIImage(named: "logo.png")
+        logo.frame = CGRect(x: w/2-225, y: 60, width: 450, height: 150)
+        
+        view.addSubview(logo)
+        
+        
+        let labelTitle = UILabel(frame: CGRect(x: w/2-400, y: 160, width: 800, height: 200))
+        labelTitle.font = UIFont(name: "Futura-Bold", size: 50)
+        labelTitle.textColor = UIColor.init(red: 61.0/255, green: 119.0/255, blue: 133.0/255, alpha: 1.0)
         labelTitle.textAlignment = .center
-        labelTitle.adjustsFontSizeToFitWidth = true
+        labelTitle.numberOfLines = 2
+        //labelTitle.adjustsFontSizeToFitWidth = true
         
         
-        let labelText = UILabel(frame: CGRect(x: w/2-225, y: 420, width: 450, height: 300))
-        labelText.font = labelText.font.withSize(30)
+        let labelText = UILabel(frame: CGRect(x: w/2-225, y: h/2-100, width: 450, height: 300))
+        labelText.font = UIFont(name: "Futura-Bold", size: 30)
+        labelText.textColor = UIColor.init(red: 61.0/255, green: 119.0/255, blue: 133.0/255, alpha: 1.0)
         labelText.numberOfLines = 4
         labelText.textAlignment = .center
         
-        let labelScore = UILabel(frame: CGRect(x: w/2-225, y: 220, width: 450, height: 100))
-        labelScore.font = labelScore.font.withSize(30)
+        let labelScore = UILabel(frame: CGRect(x: w/2-225, y: h/2-225, width: 450, height: 100))
+        labelScore.font = UIFont(name: "Futura-Bold", size: 30)
+        labelScore.textColor = UIColor.init(red: 61.0/255, green: 119.0/255, blue: 133.0/255, alpha: 1.0)
         labelScore.numberOfLines = 2
         labelScore.textAlignment = .center
-        labelScore.text = "Your score is \(score*100)%"
+        let formattedScore = String(format: "%.1f", score*100)
+       // labelScore.text = String(format: "Your score is ", score*100)
+        labelScore.text = "Your score is \(formattedScore)%"
         
         
         if score*100 > 50 {
@@ -52,24 +65,20 @@ public class FinishScreenViewController: UIViewController {
         let buttonMainPage = UIButton(frame: CGRect(x: w/2-150, y: h/2+400, width: 300, height: 60))
         buttonMainPage.titleLabel?.textAlignment = .center
         buttonMainPage.setTitle("Menu", for: .normal)
-        buttonMainPage.titleLabel?.font = buttonMainPage.titleLabel?.font.withSize(20)
         buttonMainPage.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.9)
         buttonMainPage.layer.cornerRadius = 20
-        //buttonNextChapter.layer.borderWidth = 2
-        //buttonNextChapter.layer.borderColor = UIColor.black.cgColor;
-        buttonMainPage.setTitleColor(.black, for: .normal)
+        buttonMainPage.titleLabel?.font = UIFont(name: "Futura", size: 20)
+        buttonMainPage.setTitleColor(UIColor.init(red: 61.0/255, green: 119.0/255, blue: 133.0/255, alpha: 1.0), for: .normal)
         buttonMainPage.addTarget(self, action: #selector(mainPageTransition(sender:)), for: .touchDown)
         
         let buttonNextChapter = UIButton(frame: CGRect(x: w/2-150, y: h/2+320, width: 300, height: 60))
         buttonNextChapter.titleLabel?.numberOfLines = 2
         buttonNextChapter.titleLabel?.textAlignment = .center
-        buttonNextChapter.setTitle("Check it out!!", for: .normal)
-        buttonNextChapter.titleLabel?.font = buttonNextChapter.titleLabel?.font.withSize(20)
+        buttonNextChapter.setTitle("Check it out", for: .normal)
+        buttonNextChapter.titleLabel?.font = UIFont(name: "Futura", size: 20)
         buttonNextChapter.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.9)
         buttonNextChapter.layer.cornerRadius = 20
-        //buttonNextChapter.layer.borderWidth = 2
-        //buttonNextChapter.layer.borderColor = UIColor.black.cgColor;
-        buttonNextChapter.setTitleColor(.black, for: .normal)
+        buttonNextChapter.setTitleColor(UIColor.init(red: 61.0/255, green: 119.0/255, blue: 133.0/255, alpha: 1.0), for: .normal)
         buttonNextChapter.addTarget(self, action: #selector(lessonTransition(sender:)), for: .touchDown)
         
         
@@ -81,7 +90,7 @@ public class FinishScreenViewController: UIViewController {
         
         
         
-        let progressView = ProgressCircularView(frame: CGRect(x: w/2-150 , y: h/2-300 , width: 150, height: 150))
+        let progressView = ProgressCircularView(frame: CGRect(x: w/2-100 , y: h/2-190 , width: 100, height: 100))
         progressView.trackColor = UIColor.lightGray
         progressView.progressColor = UIColor(red: 116.0/255, green: 162.0/255, blue: 38.0/255, alpha: 1.0)
         //

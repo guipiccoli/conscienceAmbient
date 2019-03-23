@@ -11,7 +11,7 @@ public class QuestionBank{
                                   optionB: "Renewable energy produces less pollution",
                                   optionC:"Renewable energy is the most used nowadays",
                                   optionD: "Oil and diesel are still good choices for powering vehicles",
-                                  answer: 1))
+                                  answer: 101))
 
         list.append(Question.init(image: "icon-economize-1.png",
                                   questionText:"Which of the following is an example of a renewable energy source?",
@@ -20,7 +20,7 @@ public class QuestionBank{
                                   optionB:"Fossil Fuels",
                                   optionC:"Solar Power",
                                   optionD:"Coal",
-                                  answer: 2))
+                                  answer: 102))
         
         list.append(Question.init(image: "3R.png",
                                   questionText:"What is the meaning of the 3R's?",
@@ -29,7 +29,7 @@ public class QuestionBank{
                                   optionB:"Reduce, Remove, Recycle",
                                   optionC:"Reuse, Recycle, Reproduce",
                                   optionD:"Reproduce, Rebuild, Reuse ",
-                                  answer: 0))
+                                  answer: 100))
         
   
         list.append(Question.init(image: "battery.png",
@@ -39,25 +39,43 @@ public class QuestionBank{
                                   optionB:"paper.png",
                                   optionC:"glass.png",
                                   optionD:"e-waste.png",
-                                  answer: 3))
+                                  answer: 103))
         
         list.append(Question.init(image: "trash.png",
                                   questionText:"What is recycling?",
                                   boolImageOption: false,
-                                  optionA:"Process to transform used materials to new products for consume",
-                                  optionB:"falsa",
-                                  optionC:"falsa",
-                                  optionD:"falsa",
-                                  answer: 0))
+                                  optionA:"Process of transforming used materials to new products for consume",
+                                  optionB:"Planting Trees",
+                                  optionC:"The act of using renewable energys",
+                                  optionD:"Commuting by clean transportion",
+                                  answer: 100))
         
         list.append(Question.init(image: "trash.png",
                                   questionText:"Can trash be used to create energy?",
                                   boolImageOption: false,
                                   optionA:"No, it can't be used",
-                                  optionB:"Only if the materials is recyclable",
-                                  optionC:"Only if the materials is non recyclable",
+                                  optionB:"Only if the materials are recyclable",
+                                  optionC:"Only if the materials are non recyclable",
                                   optionD:"It can always be used",
-                                  answer: 3))
+                                  answer: 103))
+        
+        list.append(Question.init(image: "trash.png",
+                                  questionText:"What is the best way to save tree and forests?",
+                                  boolImageOption: false,
+                                  optionA:"Reusing metallic and glass material",
+                                  optionB:"Going more times to the park",
+                                  optionC:"Recycling papers, newspapers and magazines",
+                                  optionD:"Preventing water waste",
+                                  answer: 102))
+        
+        list.append(Question.init(image: "trash.png",
+                                  questionText:"About how much of the Earth surface is water-covered?",
+                                  boolImageOption: false,
+                                  optionA:"90%",
+                                  optionB:"60%",
+                                  optionC:"70%",
+                                  optionD:"40%",
+                                  answer: 102))
         
         list.append(Question.init(image: "trash.png",
                                   questionText:"What ways can you help save the planet?",
@@ -66,17 +84,8 @@ public class QuestionBank{
                                   optionB:"Reduce the amount of waste you produce",
                                   optionC:"Reuse your plastic bottles and bags",
                                   optionD:"All of them!",
-                                  answer: 3))
+                                  answer: 103))
+
         
-        list.append(Question.init(image: "trash.png",
-                                  questionText:"What is the best way to preserve tree and florests?",
-                                  boolImageOption: false,
-                                  optionA:"Reuse metals and glasses",
-                                  optionB:"Going more times to the park",
-                                  optionC:"Recycling papers, newspapers and magazines",
-                                  optionD:"falsa",
-                                  answer: 2))
-        
-    
     }
 }
