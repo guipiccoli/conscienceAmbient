@@ -37,7 +37,7 @@ public class LessonViewController: UIViewController {
         labelTitle.text = curiosityList.list[curiosityNumber].curiosityTitle
         labelTitle.adjustsFontSizeToFitWidth = true
         
-        imageView.frame = CGRect(x: w/2-80, y: 310, width: 160, height: 160)
+        imageView.frame = CGRect(x: w/2-125, y: 310, width: 250, height: 160)
         imageView.image = UIImage(named: curiosityList.list[curiosityNumber].image)
         imageView.contentMode = .scaleAspectFit
         view.addSubview(imageView)
@@ -62,19 +62,20 @@ public class LessonViewController: UIViewController {
         labelText.layer.masksToBounds = true
         labelText.textAlignment = .center
         labelText.adjustsFontSizeToFitWidth = true
-        
-        //        labelText.text = "Well Done! You're conscious about sustainability, but you still have something to learn in the next chapter."
-        //        labelTitle.text = "Plastic"
+     
         
         view.addSubview(labelTitle)
         view.addSubview(labelText)
         
         backButton.frame = CGRect(x: 50, y: h/2+400, width: 150, height: 60)
-        backButton.setImage(UIImage(named: "backIcon.png"), for: .normal)
+        //backButton.setImage(UIImage(named: "backIcon.png"), for: .normal)
+        backButton.setTitle("Menu", for: .normal)
         backButton.imageView?.contentMode = .scaleAspectFit
         backButton.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.9)
         backButton.layer.cornerRadius = 20
         backButton.addTarget(self, action: #selector(prevCuriosity(sender:)), for: .touchDown)
+        backButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
+        backButton.setTitleColor(UIColor.init(red: 61.0/255, green: 119.0/255, blue: 133.0/255, alpha: 1.0), for: .normal)
         
         
         nextButton.frame =  CGRect(x: 520, y: h/2+400, width: 150, height: 60)
@@ -83,6 +84,9 @@ public class LessonViewController: UIViewController {
         nextButton.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.9)
         nextButton.layer.cornerRadius = 20
         nextButton.addTarget(self, action: #selector(nextCuriosity(sender:)), for: .touchDown)
+        nextButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
+        nextButton.setTitleColor(UIColor.init(red: 61.0/255, green: 119.0/255, blue: 133.0/255, alpha: 1.0), for: .normal)
+        
         
         view.addSubview(backButton)
         view.addSubview(nextButton)
@@ -97,6 +101,15 @@ public class LessonViewController: UIViewController {
             self.imageView.image = UIImage(named:(curiosityList.list[curiosityNumber].image))
             self.labelText.text = curiosityList.list[curiosityNumber].curiosityText
             self.labelTitle.text = curiosityList.list[curiosityNumber].curiosityTitle
+            self.backButton.setTitle("", for: .normal)
+            self.backButton.setImage(UIImage(named: "backIcon.png"), for: .normal)
+            
+            
+            if curiosityNumber == curiosityList.list.count-1 {
+                self.nextButton.setImage(nil, for: .normal)
+                self.nextButton.setTitle("Finish", for: .normal)
+                
+            }
         }
         else {
             let finishLessonViewController = FinishLessonViewController()
@@ -107,24 +120,39 @@ public class LessonViewController: UIViewController {
     @objc func prevCuriosity(sender: UIButton) {
         curiosityNumber -= 1
         
-        if curiosityNumber == 0 {
-            
-            let attributtedString = NSMutableAttributedString(string: curiosityList.list[curiosityNumber].curiosityText ?? "")
-            attributtedString.addAttributes([.font : UIFont(name: "Futura-Bold", size: 31)], range: NSRange(location: 0, length: 7))
-            let rangeOfReuse = NSString(string: attributtedString.string).range(of: "Reuse")
-            attributtedString.addAttributes([.font : UIFont(name: "Futura-Bold", size: 31)], range: rangeOfReuse)
-            let rangeOfRecycle = NSString(string: attributtedString.string).range(of: "Recycle")
-            attributtedString.addAttributes([.font : UIFont(name: "Futura-Bold", size: 31)], range: rangeOfRecycle)
-            labelText.attributedText = attributtedString
-            
-            self.imageView.image = UIImage(named:(curiosityList.list[curiosityNumber].image))
-            self.labelTitle.text = curiosityList.list[curiosityNumber].curiosityTitle
-            
+        if curiosityNumber >= 0 {
+            if curiosityNumber == 0 {
+                
+                let attributtedString = NSMutableAttributedString(string: curiosityList.list[curiosityNumber].curiosityText ?? "")
+                attributtedString.addAttributes([.font : UIFont(name: "Futura-Bold", size: 31)], range: NSRange(location: 0, length: 7))
+                let rangeOfReuse = NSString(string: attributtedString.string).range(of: "Reuse")
+                attributtedString.addAttributes([.font : UIFont(name: "Futura-Bold", size: 31)], range: rangeOfReuse)
+                let rangeOfRecycle = NSString(string: attributtedString.string).range(of: "Recycle")
+                attributtedString.addAttributes([.font : UIFont(name: "Futura-Bold", size: 31)], range: rangeOfRecycle)
+                labelText.attributedText = attributtedString
+                
+                self.imageView.image = UIImage(named:(curiosityList.list[curiosityNumber].image))
+                self.labelTitle.text = curiosityList.list[curiosityNumber].curiosityTitle
+                self.backButton.setImage(nil, for: .normal)
+                self.backButton.setTitle("Menu", for: .normal)
+                
+                
+                
+                
+            }
+            else {
+                self.imageView.image = UIImage(named:(curiosityList.list[curiosityNumber].image))
+                self.labelText.text = curiosityList.list[curiosityNumber].curiosityText
+                self.labelTitle.text = curiosityList.list[curiosityNumber].curiosityTitle
+                self.nextButton.setTitle("", for: .normal)
+                self.nextButton.setImage(UIImage(named: "nextIcon.png"), for: .normal)
+                
+                
+            }
         }
         else {
-            self.imageView.image = UIImage(named:(curiosityList.list[curiosityNumber].image))
-            self.labelText.text = curiosityList.list[curiosityNumber].curiosityText
-            self.labelTitle.text = curiosityList.list[curiosityNumber].curiosityTitle
+            let startScreen = StartScreenViewController()
+            self.present(startScreen, animated: true, completion: nil)
         }
     }
     

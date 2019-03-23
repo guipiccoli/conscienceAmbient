@@ -41,7 +41,7 @@ public class QuestionBank{
                                   optionD:"e-waste.png",
                                   answer: 103))
         
-        list.append(Question.init(image: "trash.png",
+        list.append(Question.init(image: "recycle.png",
                                   questionText:"What is recycling?",
                                   boolImageOption: false,
                                   optionA:"Process of transforming used materials to new products for consume",
@@ -50,7 +50,7 @@ public class QuestionBank{
                                   optionD:"Commuting by clean transportion",
                                   answer: 100))
         
-        list.append(Question.init(image: "trash.png",
+        list.append(Question.init(image: "energy1.png",
                                   questionText:"Can trash be used to create energy?",
                                   boolImageOption: false,
                                   optionA:"No, it can't be used",
@@ -59,7 +59,7 @@ public class QuestionBank{
                                   optionD:"It can always be used",
                                   answer: 103))
         
-        list.append(Question.init(image: "trash.png",
+        list.append(Question.init(image: "tree.png",
                                   questionText:"What is the best way to save tree and forests?",
                                   boolImageOption: false,
                                   optionA:"Reusing metallic and glass material",
@@ -68,7 +68,7 @@ public class QuestionBank{
                                   optionD:"Preventing water waste",
                                   answer: 102))
         
-        list.append(Question.init(image: "trash.png",
+        list.append(Question.init(image: "earth.png",
                                   questionText:"About how much of the Earth surface is water-covered?",
                                   boolImageOption: false,
                                   optionA:"90%",
@@ -77,8 +77,8 @@ public class QuestionBank{
                                   optionD:"40%",
                                   answer: 102))
         
-        list.append(Question.init(image: "trash.png",
-                                  questionText:"What ways can you help save the planet?",
+        list.append(Question.init(image: "ecology.png",
+                                  questionText:"In what ways can you help save the planet?",
                                   boolImageOption: false,
                                   optionA:"Recycle",
                                   optionB:"Reduce the amount of waste you produce",

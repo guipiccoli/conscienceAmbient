@@ -24,7 +24,6 @@ public class QuizViewController : UIViewController {
     
     public override func loadView() {
         let view = UIView()
-        //print(self.view.frame)
         
         background.image = UIImage(named: "background.png")
         background.frame = CGRect(x: 0, y: 0, width: 720, height: 1080)
@@ -47,7 +46,7 @@ public class QuizViewController : UIViewController {
         view.addSubview(lblQuestionNumber)
         
         
-        imageView.frame = CGRect(x: 290, y: 290, width: 135, height: 160)
+        imageView.frame = CGRect(x: 290, y: 300, width: 135, height: 160)
         imageView.contentMode = .scaleAspectFit
         view.addSubview(imageView)
         
@@ -63,11 +62,9 @@ public class QuizViewController : UIViewController {
         
         optionA.frame = CGRect(x: 85, y: 710, width: 270, height: 130)
         optionA.tag = 100
-//        optionA.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
         optionA.layer.cornerRadius = 12
         optionA.titleLabel?.textAlignment = .center
         optionA.titleLabel?.font = UIFont(name: "Futura", size: 21)
-        //optionA.titleLabel?.adjustsFontSizeToFitWidth = true
         
         optionA.titleLabel?.numberOfLines = 4
         
@@ -78,7 +75,6 @@ public class QuizViewController : UIViewController {
         
         optionB.frame = CGRect(x: 365, y: 710, width: 270, height: 130)
         optionB.tag = 101
-//        optionB.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
         optionB.layer.cornerRadius = 12
         optionB.titleLabel?.textAlignment = .center
         optionB.titleLabel?.font = UIFont(name: "Futura", size: 21)
@@ -92,7 +88,6 @@ public class QuizViewController : UIViewController {
         
         optionC.frame = CGRect(x: 85, y: 855, width: 270, height: 130)
         optionC.tag = 102
-//        optionC.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
         optionC.layer.cornerRadius = 12
         optionC.titleLabel?.textAlignment = .center
         optionC.titleLabel?.font = UIFont(name: "Futura", size: 21)
@@ -106,7 +101,6 @@ public class QuizViewController : UIViewController {
         
         optionD.frame = CGRect(x: 365, y: 855, width: 270, height: 130)
         optionD.tag = 103
-//        optionD.backgroundColor = UIColor.init(red: 238.0/255, green: 237.0/255, blue: 238.0/255, alpha: 0.95)
         optionD.titleLabel?.font = UIFont(name: "Futura", size: 21)
         optionD.layer.cornerRadius = 12
         optionD.titleLabel?.textAlignment = .center
@@ -122,7 +116,6 @@ public class QuizViewController : UIViewController {
     }
     
     @objc func buttonTapped(sender: UIButton) {
-        //print("Button was tapped \(String(describing: sender.titleLabel?.text))")
         let scorePerQuestion: Float = (1.0/Float(questionList.list.count))
         var auxProgressValue: Float = score
         
@@ -130,8 +123,16 @@ public class QuizViewController : UIViewController {
             auxProgressValue += scorePerQuestion
             UIView.animate(withDuration: 0.5, animations: {
                 sender.backgroundColor = UIColor.init(red: 116.0/225, green: 162.0/255, blue: 38.0/255, alpha: 0.9)
+                self.optionA.isEnabled = false
+                self.optionB.isEnabled = false
+                self.optionC.isEnabled = false
+                self.optionD.isEnabled = false
             }) { (hasEnded) in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    self.optionA.isEnabled = true
+                    self.optionB.isEnabled = true
+                    self.optionC.isEnabled = true
+                    self.optionD.isEnabled = true
                     self.updateQuestion()
                 }
             }
@@ -142,9 +143,17 @@ public class QuizViewController : UIViewController {
                 sender.backgroundColor = UIColor.init(red: 238.0/225, green: 78.0/255, blue: 44/255, alpha: 0.9)
                 if let button = self.view.viewWithTag(self.questionList.list[self.questionNumber].answer) {
                     button.backgroundColor = UIColor.init(red: 116.0/225, green: 162.0/255, blue: 38.0/255, alpha: 0.9)
+                    self.optionA.isEnabled = false
+                    self.optionB.isEnabled = false
+                    self.optionC.isEnabled = false
+                    self.optionD.isEnabled = false
                     }
             }) { (hasEnded) in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    self.optionA.isEnabled = true
+                    self.optionB.isEnabled = true
+                    self.optionC.isEnabled = true
+                    self.optionD.isEnabled = true
                     self.updateQuestion()
                 }
             }
